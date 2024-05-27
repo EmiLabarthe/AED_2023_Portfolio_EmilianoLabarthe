@@ -1,0 +1,15 @@
+Factor de carga,Promedio de comparaciones al insertar,Promedio de comparaciones al buscar exitoso,Promedio de comparaciones al buscar fallido
+0.6993007,1,1,286
+0.7490637,2,2,267
+0.8,2,3,250
+0.85106385,2,3,235
+0.9009009,3,6,222
+0.913242,4,9,219
+0.921659,5,7,217
+0.9302326,6,9,215
+0.9433962,5,14,212
+0.9478673,6,12,211
+0.96153843,4,17,208
+0.9708738,10,18,206
+0.98039216,6,12,204
+0.990099,8,19,202

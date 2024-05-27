@@ -1,0 +1,31 @@
+@Override
+    public Double[][] floyd() {
+        Collection<TVertice> verticesCollection = this.vertices.values();
+        ArrayList<TVertice> vertices = new ArrayList<>();
+        for (TVertice i : verticesCollection) {
+            vertices.add(i);
+        }
+        int n = getVertices().size();
+        Double[][] A = new Double[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                A[i][j] = vertices.get(i).obtenerCostoAdyacencia(vertices.get(j));
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            A[i][i] = (double) 0;
+        }
+        for (int k = 1; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                if (A[i][k] != Double.MAX_VALUE && i != k) {
+                    for (int j = 0; j < n; j++) {
+                        Double res = A[i][k] + A[k][j];
+                        if (res < A[i][j]) {
+                            A[i][j] = res;
+                        }
+                    }
+                }
+            }
+        }
+        return A;
+    }

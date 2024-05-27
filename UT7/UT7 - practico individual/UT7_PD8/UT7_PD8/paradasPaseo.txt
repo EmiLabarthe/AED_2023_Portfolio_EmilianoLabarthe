@@ -1,0 +1,6 @@
+Montevideo,Canelones,30
+Canelones,Lavalleja,90
+Lavalleja,Florida,100
+Florida,Durazno,100
+Durazno,Tacuarembo,200
+Tacuarembo,Artigas,200

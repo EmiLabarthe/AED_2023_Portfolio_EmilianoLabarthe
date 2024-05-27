@@ -1,0 +1,53 @@
+ @Override
+    public Comparable centroDelGrafo() {
+        Collection<TVertice> verticesCollection = this.vertices.values();
+        ArrayList<TVertice> vertices = new ArrayList<>();
+        for (TVertice i : verticesCollection) {
+            vertices.add(i);
+        }
+        Double[][] matriz = this.floyd();
+        Double[] excentricidad = new Double[matriz.length];
+        for (int i = 0; i < matriz.length; i++) {
+            excentricidad[i] = Double.MIN_VALUE;
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (matriz[i][j] > excentricidad[i] && matriz[i][j] != Double.MAX_VALUE) {
+                    excentricidad[i] = matriz[i][j];
+                }
+            }
+        }
+        Double minExcentricidad = Double.MAX_VALUE;
+        TVertice centro = null;
+        for (int i = 0; i < excentricidad.length; i++) {
+            if (excentricidad[i] < minExcentricidad && excentricidad[i] != 0) {
+                minExcentricidad = excentricidad[i];
+                centro = vertices.get(i);
+            }
+        }
+        return (centro == null) ? null : centro.getEtiqueta();
+    }
+
+
+@Override
+    public Comparable obtenerExcentricidad(Comparable etiquetaVertice) {
+        Double[][] matriz = this.floyd();
+        Double[] excentricidad = new Double[matriz.length];
+
+        int indiceVertice = new LinkedList(vertices.keySet()).indexOf(etiquetaVertice);
+        if (indiceVertice == -1) {
+            return null;
+        }
+        for (int i = 0; i < excentricidad.length; i++) {
+            excentricidad[i] = 0.0;
+
+        }
+        for (int i = 0; i < matriz[indiceVertice].length; i++) {
+            if (matriz[i][indiceVertice] > excentricidad[indiceVertice]) {
+                excentricidad[indiceVertice] = matriz[i][indiceVertice];
+            }
+        }
+
+        if(excentricidad[indiceVertice] == Double.MAX_VALUE){
+            return -1;
+        }
+        return excentricidad[indiceVertice];
+    }
